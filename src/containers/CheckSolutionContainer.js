@@ -3,15 +3,22 @@
  */
 import CheckSolution from "../components/CheckSolution";
 import { connect } from "react-redux";
-import { hasGivenAllSolutions } from "../library/stateManipulations";
+import { checkSolution } from "../actions/actions";
 
+// So far, not really usefull to have a container for this, BUT we know practically for sure that
+// we'll add some conditions to clicking the button.
 const mapStateToProps = (state, ownProps) => {
-	let EXERCISE_LIST = ownProps.exerciseList;
 	return {
-		disabled: !hasGivenAllSolutions(state, EXERCISE_LIST)
+		disabled: state.showAnswers
 	};
 };
 
-const CheckSolutionContainer = connect(mapStateToProps)(CheckSolution);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onCheckSolution: () => dispatch(checkSolution())
+	}
+};
+
+const CheckSolutionContainer = connect(mapStateToProps, mapDispatchToProps)(CheckSolution);
 
 export default CheckSolutionContainer;

@@ -9,8 +9,9 @@ import EXERCISE_LIST from '../data';
 const App = () => {
 	return (
 		<div>
-			<div className="consigne">Trouvez les bonnes mutations</div>
+			<div className="instruction-title">Trouvez les bonnes mutations</div>
 			<SentenceDisplayerList exerciseList={EXERCISE_LIST}/>
+			<CheckSolutionContainer/>
 		</div>
 	)
 };

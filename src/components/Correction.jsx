@@ -15,7 +15,7 @@ const Correction = ({show, rightAnswers, splittedCorrectedSentence, mutationInde
 				return <span key={index} className={solutionLetterClass}>{chunk}</span>
 			});
 			template = (
-				<div>
+				<div className="solution-band">
 					<span className="wrong-answer">X </span>
 					{correction}
 				</div>

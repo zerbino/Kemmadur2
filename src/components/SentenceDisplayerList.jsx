@@ -11,7 +11,7 @@ const SentenceDisplayerList = ({exerciseList}) => {
 			{
 				exerciseList.map((exercise) => {
 					return (
-						<div key={exercise.id}>
+						<div key={exercise.id} className="sentenceAndCorrection">
 							<SentenceDisplayerContainer exerciseId={exercise.id} exerciseList={exerciseList}/>
 							<CorrectionContainer exerciseId={exercise.id} exerciseList={exerciseList}/>
 						</div>

@@ -80,8 +80,10 @@ body {
   background-color: #D3D3D3;
 }
 
-.consigne {
+.instruction-title {
   margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  display: inline-block;
 }
 
 .sentenceDisplayerContainer {
@@ -130,4 +132,12 @@ body {
 
 .wrong-answer {
   color: red;
+}
+
+.sentenceAndCorrection {
+  margin-bottom: 30px;
+}
+
+.solution-band {
+  background-color: rgba(93, 183, 239, 0.1);
 }

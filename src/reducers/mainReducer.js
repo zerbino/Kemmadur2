@@ -42,7 +42,7 @@ const kemmadurApp = (state = initialState, action) => {
 			return Object.assign({}, state, {proposals: newProposals});
 		}
 		case "CHECK_SOLUTION": {
-			return Object.assign({}, state, {checkSolution: true});
+			return Object.assign({}, state, {showAnswers: true});
 		}
 		case "SET_CURRENT_MUTATION":
 			return Object.assign({}, state, {
