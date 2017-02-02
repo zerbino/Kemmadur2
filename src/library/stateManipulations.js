@@ -2,42 +2,42 @@
  * Created by rmartignoni on 10/02/2017.
  */
 
-export const getExercise = (state, EXERCISE_LIST, exerciseId) => {
-	return EXERCISE_LIST.find((exercise) => {
+export const getExercise = (exerciseList, exerciseId) => {
+	return exerciseList.find((exercise) => {
 		return exercise.id === exerciseId;
-	})
+	});
 };
 
-export const getMutations = (state, EXERCISE_LIST, exerciseId) => {
-	return getExercise(state, EXERCISE_LIST, exerciseId).mutations;
+export const getMutations = (exerciseList, exerciseId) => {
+	return getExercise(exerciseList, exerciseId).mutations;
 };
 
-export const getExerciseSentence = (state, EXERCISE_LIST, exerciseId) => {
-	return getExercise(state, EXERCISE_LIST, exerciseId).splittedSentence;
+export const getMutation = (exerciseList, exerciseId, mutationIndex) => {
+	return getMutations(exerciseList, exerciseId).find((mutation) => mutation.mutationIndex === mutationIndex);
 };
 
-export const getCurrentExercise = (state, EXERCISE_LIST) => {
-	return getExercise(state, EXERCISE_LIST, state.currentExerciseId);
+export const getExerciseSentence = (exerciseList, exerciseId) => {
+	return getExercise(exerciseList, exerciseId).splittedSentence;
 };
 
-export const getCurrentMutations = (state, EXERCISE_LIST) => {
-	return getMutations(state, EXERCISE_LIST, state.currentExerciseId);
+export const getCurrentMutations = (state, exerciseList) => {
+	return getMutations(exerciseList, state.currentExerciseId);
 };
 
-export const getCurrentSentence = (state, EXERCISE_LIST) => {
-	return getExerciseSentence(state, EXERCISE_LIST, state.currentExerciseId);
+export const getCurrentSentence = (state, exerciseList) => {
+	return getExerciseSentence(exerciseList, state.currentExerciseId);
 };
 
-export const hasGivenAllSolutions = (state, EXERCISE_LIST) => {
-	return getCurrentMutations(state, EXERCISE_LIST).length === state.proposals.length;
+export const hasGivenAllSolutions = (state, exerciseList) => {
+	return getCurrentMutations(state, exerciseList).length === state.proposals.length;
 };
 
-export const getMutationIndexes = (state, EXERCISE_LIST, exerciseId) => {
-	return getMutations(state, EXERCISE_LIST, exerciseId).map((mutation) => mutation.mutationIndex);
+export const getMutationIndexes = (exerciseList, exerciseId) => {
+	return getMutations(exerciseList, exerciseId).map((mutation) => mutation.mutationIndex);
 };
 
 /**
- * Return the array of answers given by the player, in the right order
+ * Return the array of answers given by the player, in the right order for a given exercise
  * @param state
  * @param exerciseList
  * @param exerciseId
@@ -45,7 +45,7 @@ export const getMutationIndexes = (state, EXERCISE_LIST, exerciseId) => {
 */
 export const getSolutionsGiven = (state, exerciseList, exerciseId) => {
 	let solutionsGivenList = state.proposals;
-	let mutations = getMutations(state, exerciseList, exerciseId);
+	let mutations = getMutations(exerciseList, exerciseId);
 	//Sort the solutions in the order of the mutations
 	return solutionsGivenList.filter((proposal) => {
 			return proposal.exerciseId === exerciseId;
@@ -63,12 +63,28 @@ export const getSolutionsGiven = (state, exerciseList, exerciseId) => {
 		})
 };
 
+/**
+ * Get the list of right solutions for
+ * @param exerciseList
+ * @param exerciseId
+ * @returns {*}
+ */
+export const getSolutionsForExercise = (exerciseList, exerciseId) => {
+	return getMutations(exerciseList, exerciseId).map((mutation) => {
+		return mutation.possibilities[mutation.solutionIndex];
+	})
+};
+
 export const findProposalForMutation = (mutationIndex, proposals) => {
 	return proposals.find((proposal) => proposal.mutationIndex === mutationIndex);
 };
 
-export const getPossibilities = (state, exerciseList, exerciseId, mutationIndex) => {
-	let mutation = getMutations(state, exerciseList, exerciseId).find((mutation) => {
+export const findExerciseProposals = (proposals, exerciseId) => {
+	return proposals.filter((proposal) => proposal.exerciseId === exerciseId);
+};
+
+export const getPossibilities = (exerciseList, exerciseId, mutationIndex) => {
+	let mutation = getMutations(exerciseList, exerciseId).find((mutation) => {
 		return mutation.mutationIndex === mutationIndex;
 	});
 	return mutation ? mutation.possibilities : [];
@@ -76,4 +92,42 @@ export const getPossibilities = (state, exerciseList, exerciseId, mutationIndex)
 
 export const isCurrentMutation = (state, mutationIndex, exerciseId) => {
 	return state.currentMutationIndex === mutationIndex && state.currentExerciseId === exerciseId;
+};
+
+export const rightPossibilityIndex = (exerciseList, exerciseId, proposalMutationIndex) => {
+	return getMutation(exerciseList, exerciseId, proposalMutationIndex).solutionIndex;
+};
+
+export const isRightAnswer = (proposal, exerciseList, exerciseId) => {
+	let proposalMutationIndex = proposal.mutationIndex;
+	let possibilityIndex = proposal.possibilityIndex;
+	let _rightPossibilityIndex = rightPossibilityIndex(exerciseList, exerciseId, proposalMutationIndex);
+	return possibilityIndex === _rightPossibilityIndex;
+};
+
+export const areAnswersRight = (proposals, exerciseList, exerciseId) => {
+	let exerciseProposals = findExerciseProposals(proposals, exerciseId);
+	let numberMutationInExercise = getMutations(exerciseList, exerciseId);
+	let answeredAllQuestions = exerciseProposals.length === numberMutationInExercise.length;
+	let answersAreRight = exerciseProposals.reduce((previousProposalsCorrectness, proposal) => {
+		let currentRightAnswer = isRightAnswer(proposal, exerciseList, exerciseId);
+		return previousProposalsCorrectness && currentRightAnswer;
+	}, true);
+	return answeredAllQuestions && answersAreRight;
+};
+
+export const getSolutions = (exerciseList, exerciseId) => {
+	let mutations = getMutations(exerciseList, exerciseId);
+	return mutations.map((mutation) => {
+		return {mutationIndex: mutation.mutationIndex, solutionLetter: mutation.possibilities[mutation.solutionIndex]};
+	});
+};
+
+export const getCorrectedSentence = (exerciseList, exerciseId) => {
+	let splittedSentence = getExerciseSentence(exerciseList, exerciseId).slice();
+	let solutionLetters = getSolutions(exerciseList, exerciseId);
+	solutionLetters.map((solution) => {
+		splittedSentence.splice(solution.mutationIndex, 1, solution.solutionLetter);
+	});
+	return splittedSentence;
 };

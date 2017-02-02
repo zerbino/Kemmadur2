@@ -118,3 +118,16 @@ body {
   opacity: 0;
   padding: 0;
 }
+
+.solution-letter {
+  border-bottom: 2px dashed rgba(0, 153, 51, 0.6);
+  color: green;
+}
+
+.check-solution {
+  color: green;
+}
+
+.wrong-answer {
+  color: red;
+}

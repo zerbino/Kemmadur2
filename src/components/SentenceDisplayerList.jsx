@@ -3,13 +3,19 @@
  */
 import React from "react";
 import SentenceDisplayerContainer from "../containers/SentenceDisplayerContainer";
+import CorrectionContainer from "../containers/CorrectionContainer";
 
 const SentenceDisplayerList = ({exerciseList}) => {
 	return (
 		<div>
 			{
 				exerciseList.map((exercise) => {
-					return <SentenceDisplayerContainer key={exercise.id} exerciseId={exercise.id} exerciseList={exerciseList}/>
+					return (
+						<div key={exercise.id}>
+							<SentenceDisplayerContainer exerciseId={exercise.id} exerciseList={exerciseList}/>
+							<CorrectionContainer exerciseId={exercise.id} exerciseList={exerciseList}/>
+						</div>
+					)
 				})
 			}
 		</div>

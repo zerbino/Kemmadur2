@@ -8,7 +8,8 @@ import currentExerciseIndex from "./currentExerciseIndex";
 const initialState = {
 	"currentExerciseIndex": 0,
 	"proposals": [],
-	"checkSolution": false
+	"checkSolution": false,
+	"showAnswers": false
 };
 
 const kemmadurApp = (state = initialState, action) => {

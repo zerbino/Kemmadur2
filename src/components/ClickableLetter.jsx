@@ -13,6 +13,7 @@ import PossibilitiesDisplayerContainer from "../containers/PossibilitiesDisplaye
  * @param possibilities: the list of possibilities for this letter
  * @param isCurrent: true if this component is the current mutation letter
  * @param isProposal: true if this component currently displays a proposal, false if it's the letter of the not mutated word.
+ * @param exerciseId: the id of the exercise containing the mutation
  */
 const ClickableLetter = ({onClick, letter, mutationIndex, possibilities, isCurrent, isProposal, exerciseId}) => {
 

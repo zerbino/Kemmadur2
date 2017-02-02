@@ -10,8 +10,8 @@ import { setCurrentMutation } from "../actions/actions"
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		mutationIndexes: getMutationIndexes(state, ownProps.exerciseList, ownProps.exerciseId),
-		splittedSentence: getExerciseSentence(state, ownProps.exerciseList, ownProps.exerciseId),
+		mutationIndexes: getMutationIndexes(ownProps.exerciseList, ownProps.exerciseId),
+		splittedSentence: getExerciseSentence(ownProps.exerciseList, ownProps.exerciseId),
 		proposals: getSolutionsGiven(state, ownProps.exerciseList, ownProps.exerciseId),
 		exerciseId: ownProps.exerciseId
 	}

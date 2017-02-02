@@ -9,7 +9,7 @@ import ClickableLetter from "../components/ClickableLetter";
 const mapStateToProps = (state, ownProps) => {
 	return {
 		letter: ownProps.letter,
-		possibilities: getPossibilities(state, ownProps.exerciseList, ownProps.exerciseId, ownProps.mutationIndex),
+		possibilities: getPossibilities(ownProps.exerciseList, ownProps.exerciseId, ownProps.mutationIndex),
 		mutationIndex: ownProps.mutationIndex,
 		isCurrent: isCurrentMutation(state, ownProps.mutationIndex, ownProps.exerciseId),
 		isProposal: ownProps.isProposal,
