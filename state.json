@@ -1,0 +1,31 @@
+{
+  "exerciseList": [
+    {
+      "splittedSentence": [
+        "ar ",
+        "s",
+        "oudarded zo gwisket e ruz"
+      ],
+      "mutations": [
+        {
+          "mutationIndex": 1,
+          "possibilities": [
+            "s",
+            "z",
+            ""
+          ],
+          "solutionIndex": 0
+        }
+      ]
+    }
+  ],
+  "currentExerciseIndex": 0,
+  "currentMutationIndex": -1,
+  "proposals": [{
+    "exerciseIndex": 0,
+    "mutationIndex": 1,
+    "possibilityIndex": 1
+  }
+  ],
+  "checkSolution": false
+}

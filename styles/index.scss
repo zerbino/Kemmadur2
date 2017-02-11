@@ -1,0 +1,85 @@
+@import 'main';
+@import 'common/button';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: celtic;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 0 40px 5px #888888 inset
+}
+
+.container {
+  min-height: 100%;
+  background-image: url(../img/modelecrit.jpg);
+  background-size: 60%;
+  background-attachment: local;
+  overflow: auto;
+  padding: 15px;
+}
+
+.container > div {
+  min-height: 100%;
+}
+
+@media screen and (min-width: 801px) {
+  .container {
+    width: 700px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.display-block {
+  display: block;
+}
+
+@font-face {
+  font-family: celtic;
+  src: url('../fonts/LearningCurve.ttf');
+}
+
+.possibility-container {
+  text-align: center;
+}
+
+.possibility-button {
+  width: 40px;
+  height: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  vertical-align: middle;
+  background-color: #e5e5e5;
+}
+
+.possibility-button:hover {
+  transition: background-color 0.5s;
+  background-color: #D3D3D3;
+}
+
+.consigne {
+  margin-bottom: 20px;
+}
+
+.sentenceDisplayerContainer {
+  margin-bottom: 15px;
+}
