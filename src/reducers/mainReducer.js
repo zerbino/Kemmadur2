@@ -19,13 +19,13 @@ const kemmadurApp = (state = initialState, action) => {
 		{
 			let proposals = state.proposals;
 			let proposalInListIndex = proposals.findIndex((mutation) => {
-				return mutation.mutationIndex === state.currentMutationIndex && mutation.exerciseIndex === state.currentExerciseIndex
+				return mutation.mutationIndex === action.mutationIndex && mutation.exerciseId === state.currentExerciseId
 			});
 			let proposal = {
-				mutationIndex: state.currentMutationIndex,
+				mutationIndex: action.mutationIndex,
 				possibilityIndex: action.possibilityIndex,
 				proposalId: action.proposalId,
-				exerciseIndex: state.currentExerciseIndex
+				exerciseId: state.currentExerciseId
 			};
 			let newProposals;
 			if (state.checkSolution) {
@@ -45,9 +45,11 @@ const kemmadurApp = (state = initialState, action) => {
 		}
 		case "SET_CURRENT_MUTATION":
 			return Object.assign({}, state, {
-				"currentExerciseIndex": action.currentExerciseIndex,
+				"currentExerciseId": action.currentExerciseId,
 				"currentMutationIndex": action.currentMutationIndex
 			});
+		case "RESET_CURRENT_MUTATION":
+			return Object.assign({}, state, {"currentMutationIndex": -1});
 		default:
 			return state;
 	}

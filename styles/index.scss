@@ -58,7 +58,11 @@ body {
 }
 
 .possibility-container {
+  bottom: 15px;
+  left: 0;
+  width: 100%;
   text-align: center;
+  position: relative;
 }
 
 .possibility-button {
@@ -82,4 +86,35 @@ body {
 
 .sentenceDisplayerContainer {
   margin-bottom: 15px;
+}
+
+.clicable-letter {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.mutation-possibilities {
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(209, 224, 224,0.5);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mutation-possibilities-current {
+  max-height: 400px;
+  padding: 5px;
+  transition: max-height 0.4s ease-out, opacity 0.8s;
+}
+
+.mutation-possibilities-hidden {
+  transition: max-height 0.4s ease-out, opacity 0.8s, padding 0s 0.4s;
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
 }

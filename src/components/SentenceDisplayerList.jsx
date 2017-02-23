@@ -8,8 +8,8 @@ const SentenceDisplayerList = ({exerciseList}) => {
 	return (
 		<div>
 			{
-				exerciseList.map((exercise, index) => {
-					return <SentenceDisplayerContainer key={exercise.id} exerciseList={exerciseList} exerciseIndex={index}/>
+				exerciseList.map((exercise) => {
+					return <SentenceDisplayerContainer key={exercise.id} exerciseId={exercise.id} exerciseList={exerciseList}/>
 				})
 			}
 		</div>

@@ -4,11 +4,13 @@
 
 let proposalId = 0;
 
-export const makeProposal = (possibilityIndex) => {
+export const makeProposal = (possibilityIndex, mutationIndex, exerciseId) => {
 	return {
 		type: "MAKE_PROPOSAL",
 		possibilityIndex,
-		proposalId: proposalId++
+		proposalId: proposalId++,
+		mutationIndex,
+		exerciseId
 	};
 };
 
@@ -22,10 +24,16 @@ export const checkSolution = () => {
  * Set the mutation the user is about to answer
  * @returns {{type: string}}
  */
-export const setCurrentMutation = (currentExerciseIndex, currentMutationIndex) => {
+export const setCurrentMutation = (currentExerciseId, currentMutationIndex) => {
 	return {
 		type: "SET_CURRENT_MUTATION",
-		currentExerciseIndex,
+		currentExerciseId,
 		currentMutationIndex
+	};
+};
+
+export const resetCurrentMutation = () => {
+	return {
+		type: "RESET_CURRENT_MUTATION"
 	};
 };

@@ -4,28 +4,23 @@
 import SentenceDisplayer from "../components/SentenceDisplayer";
 import { connect } from "react-redux";
 import { getSolutionsGiven } from "../library/stateManipulations";
+import { getExerciseSentence } from "../library/stateManipulations";
+import { getMutationIndexes } from "../library/stateManipulations";
 import { setCurrentMutation } from "../actions/actions"
-
-const getSplittedSentence = (state, exerciseList, exerciseIndex) => {
-	return exerciseList[exerciseIndex].splittedSentence;
-};
-
-const getMutationIndexes = (state, exerciseList, exerciseIndex) => {
-	return exerciseList[exerciseIndex].mutations.map((mutation) => mutation.mutationIndex);
-};
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		mutationIndexes: getMutationIndexes(state, ownProps.exerciseList, ownProps.exerciseIndex),
-		splittedSentence: getSplittedSentence(state, ownProps.exerciseList, ownProps.exerciseIndex),
-		proposals: getSolutionsGiven(state, ownProps.exerciseList, ownProps.exerciseIndex)
+		mutationIndexes: getMutationIndexes(state, ownProps.exerciseList, ownProps.exerciseId),
+		splittedSentence: getExerciseSentence(state, ownProps.exerciseList, ownProps.exerciseId),
+		proposals: getSolutionsGiven(state, ownProps.exerciseList, ownProps.exerciseId),
+		exerciseId: ownProps.exerciseId
 	}
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onMutationClicked: (mutationIndex) => {
-			dispatch(setCurrentMutation(ownProps.exerciseIndex, mutationIndex));
+			dispatch(setCurrentMutation(ownProps.exerciseId, mutationIndex));
 		}
 	}
 };

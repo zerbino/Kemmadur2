@@ -1,28 +1,30 @@
-import React from 'react';
+/**
+ * Created by rmartignoni on 17/02/2017.
+ */
+import React from "react";
 
-const PossibilitiesDisplayer = ({possibilities, onPossibilityClick, disabled}) => {
+const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent}) => {
+
+	const currentClass = isCurrent ? "mutation-possibilities-current" : "mutation-possibilities-hidden";
+
+	const onClick = (e, possibilityIndex) => {
+		e.preventDefault();
+		e.stopPropagation();
+		onPossibilityClicked(possibilityIndex);
+	};
+
 	return (
 		<div className="possibility-container">
-			{
-				possibilities.map((possibility, index) => {
-					return (
-						<button
-							className="possibility-button"
-							key={index}
-							disabled={disabled}
-							onClick={(e) => {
-								e.preventDefault();
-								// pass the index of the possibility to the parent
-								onPossibilityClick(index);
-							}}
-						>
-							{possibility}
-						</button>
-					)
-				})
-			}
+			<div className={currentClass + " mutation-possibilities"}>
+				{
+					possibilities.map((possibility, possibilityIndex) => {
+						return <span key={possibilityIndex} onClick={(e) => {onClick(e, possibilityIndex)}}>{possibility}</span>
+					})
+				}
+			</div>
 		</div>
 	)
+
 };
 
 export default PossibilitiesDisplayer;
