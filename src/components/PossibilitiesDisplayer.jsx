@@ -6,6 +6,7 @@ import ShowMutationRuleContainer from "../containers/ShowMutationRuleContainer";
 
 const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent}) => {
 
+	// These classes are for animation
 	const currentClass = isCurrent ? "mutation-possibilities-current" : "mutation-possibilities-hidden";
 
 	const onClick = (e, possibilityIndex) => {
