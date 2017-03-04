@@ -1,6 +1,5 @@
 /**
  * Created by rmartignoni on 09/02/2017.
  */
-import EXERCISE_LIST from "./exerciseList";
-
-export default EXERCISE_LIST;
+export { default as EXERCISE_LIST } from "./exerciseList";
+export { default as MUTATION_RULES } from "./mutationRules";

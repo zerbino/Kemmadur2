@@ -16,20 +16,19 @@ export const getMutation = (exerciseList, exerciseId, mutationIndex) => {
 	return getMutations(exerciseList, exerciseId).find((mutation) => mutation.mutationIndex === mutationIndex);
 };
 
+export const getCurrentMutation = (state, exerciseList) => {
+	let currentExerciseId = state.currentExerciseId;
+	let currentMutationIndex = state.currentMutationIndex;
+	if (currentMutationIndex === -1) {
+		let error = new Error('No mutation currently selected');
+		error.name = "NoMutationSelected";
+		throw error;
+	}
+	return getMutation(exerciseList, currentExerciseId, currentMutationIndex);
+};
+
 export const getExerciseSentence = (exerciseList, exerciseId) => {
 	return getExercise(exerciseList, exerciseId).splittedSentence;
-};
-
-export const getCurrentMutations = (state, exerciseList) => {
-	return getMutations(exerciseList, state.currentExerciseId);
-};
-
-export const getCurrentSentence = (state, exerciseList) => {
-	return getExerciseSentence(exerciseList, state.currentExerciseId);
-};
-
-export const hasGivenAllSolutions = (state, exerciseList) => {
-	return getCurrentMutations(state, exerciseList).length === state.proposals.length;
 };
 
 export const getMutationIndexes = (exerciseList, exerciseId) => {
@@ -130,4 +129,22 @@ export const getCorrectedSentence = (exerciseList, exerciseId) => {
 		splittedSentence.splice(solution.mutationIndex, 1, solution.solutionLetter);
 	});
 	return splittedSentence;
+};
+
+export const getMutationRuleAndCaseIdFor = (mutation, rules) => {
+	let mutationLink = mutation.mutationLink;
+	return {
+		mutationRule: rules.find((rule) => rule.mutationRuleId === mutationLink.mutationId),
+		caseId: mutationLink.caseId
+	};
+};
+
+export const getCurrentMutationRuleAndCaseId = (state, exerciseList, rules) => {
+	try {
+		let currentMutation = getCurrentMutation(state, exerciseList);
+		return getMutationRuleAndCaseIdFor(currentMutation, rules);
+	}
+	catch (e) {
+		return false;
+	}
 };

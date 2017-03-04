@@ -19,7 +19,10 @@ const EXERCISE_LIST = [
 					"z",
 					""
 				],
-				"solutionIndex": 0
+				"solutionIndex": 0,
+				"mutationLink": {
+					"mutationId": 2
+				}
 			},
 			{
 				"mutationIndex": 3,
@@ -28,7 +31,11 @@ const EXERCISE_LIST = [
 					"v",
 					"b"
 				],
-				"solutionIndex": 1
+				"solutionIndex": 1,
+				"mutationLink": {
+					"mutationId": 0,
+					"caseId": 0
+				}
 			}
 		]
 	},
@@ -45,7 +52,11 @@ const EXERCISE_LIST = [
 					"v",
 					"b"
 				],
-				"solutionIndex": 1
+				"solutionIndex": 1,
+				"mutationLink": {
+					"mutationId": 0,
+					"caseId": 2
+				}
 			}
 		]
 	},
@@ -64,7 +75,11 @@ const EXERCISE_LIST = [
 					"d",
 					"z"
 				],
-				"solutionIndex": 2
+				"solutionIndex": 2,
+				"mutationLink": {
+					"mutationId": 1,
+					"caseId": 0
+				}
 			}
 		]
 	},
@@ -79,127 +94,11 @@ const EXERCISE_LIST = [
 				possibilities: [
 					"t", "d", "z"
 				],
-				"solutionIndex": 0
-			}
-		]
-	},
-	{
-		"id": 4,
-		"splittedSentence": [
-			"Ar ",
-			"s",
-			"oudarded zo gwisket e ruz hag ar ",
-			"m",
-			"eleien zo gwisket e du"
-		],
-		"mutations": [
-			{
-				"mutationIndex": 1,
-				"possibilities": [
-					"s",
-					"z",
-					""
-				],
-				"solutionIndex": 0
-			},
-			{
-				"mutationIndex": 3,
-				"possibilities": [
-					"m",
-					"v",
-					"b"
-				],
-				"solutionIndex": 1
-			}
-		]
-	},
-	{
-		"id": 5,
-		"splittedSentence": [
-			"Ar ",
-			"s",
-			"oudarded zo gwisket e ruz hag ar ",
-			"m",
-			"eleien zo gwisket e du"
-		],
-		"mutations": [
-			{
-				"mutationIndex": 1,
-				"possibilities": [
-					"s",
-					"z",
-					""
-				],
-				"solutionIndex": 0
-			},
-			{
-				"mutationIndex": 3,
-				"possibilities": [
-					"m",
-					"v",
-					"b"
-				],
-				"solutionIndex": 1
-			}
-		]
-	},
-	{
-		"id": 6,
-		"splittedSentence": [
-			"Ar ",
-			"s",
-			"oudarded zo gwisket e ruz hag ar ",
-			"m",
-			"eleien zo gwisket e du"
-		],
-		"mutations": [
-			{
-				"mutationIndex": 1,
-				"possibilities": [
-					"s",
-					"z",
-					""
-				],
-				"solutionIndex": 0
-			},
-			{
-				"mutationIndex": 3,
-				"possibilities": [
-					"m",
-					"v",
-					"b"
-				],
-				"solutionIndex": 1
-			}
-		]
-	},
-	{
-		"id": 7,
-		"splittedSentence": [
-			"Ar ",
-			"s",
-			"oudarded zo gwisket e ruz hag ar ",
-			"m",
-			"eleien zo gwisket e du"
-		],
-		"mutations": [
-			{
-				"mutationIndex": 1,
-				"possibilities": [
-					"s",
-					"z",
-					""
-				],
-				"solutionIndex": 0
-			},
-			{
-				"mutationIndex": 3,
-				"possibilities": [
-					"m",
-					"v",
-					"b"
-				],
-				"solutionIndex": 1
+				"solutionIndex": 0,
+				"mutationLink": {
+					"mutationId": 0,
+					"caseId": 4
+				}
 			}
 		]
 	}

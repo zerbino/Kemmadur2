@@ -9,7 +9,14 @@ const initialState = {
 	"currentExerciseIndex": 0,
 	"proposals": [],
 	"checkSolution": false,
-	"showAnswers": false
+	"showAnswers": false,
+	"showMutationRule": false,
+	"currentlyShowedMutationRule": {
+		mutationRuleId: -1,
+		caseId: -1
+	},
+	"currentMutationIndex": -1,
+	"currentExerciseId": -1
 };
 
 const kemmadurApp = (state = initialState, action) => {
@@ -50,7 +57,9 @@ const kemmadurApp = (state = initialState, action) => {
 				"currentMutationIndex": action.currentMutationIndex
 			});
 		case "RESET_CURRENT_MUTATION":
-			return Object.assign({}, state, {"currentMutationIndex": -1});
+			return Object.assign({}, state, {currentMutationIndex: -1});
+		case "SET_SHOW_MUTATION_RULE":
+					return Object.assign({}, state, {showMutationRule: action.showed});
 		default:
 			return state;
 	}

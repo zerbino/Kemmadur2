@@ -4,7 +4,9 @@
 import React from "react";
 import SentenceDisplayerList from "../components/SentenceDisplayerList";
 import CheckSolutionContainer from "../containers/CheckSolutionContainer";
-import EXERCISE_LIST from '../data';
+import {EXERCISE_LIST} from '../data';
+import {MUTATION_RULES} from '../data';
+import MutationRuleDialogContainer from "../containers/MutationRuleDialogContainer";
 
 const App = () => {
 	return (
@@ -12,6 +14,7 @@ const App = () => {
 			<div className="instruction-title">Trouvez les bonnes mutations</div>
 			<SentenceDisplayerList exerciseList={EXERCISE_LIST}/>
 			<CheckSolutionContainer/>
+			<MutationRuleDialogContainer exerciseList={EXERCISE_LIST} mutationRules={MUTATION_RULES}/>
 		</div>
 	)
 };

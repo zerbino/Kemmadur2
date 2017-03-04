@@ -37,3 +37,10 @@ export const resetCurrentMutation = () => {
 		type: "RESET_CURRENT_MUTATION"
 	};
 };
+
+export const setShowMutationRule = (showed) => {
+	return {
+		type: "SET_SHOW_MUTATION_RULE",
+		showed
+	}
+};
