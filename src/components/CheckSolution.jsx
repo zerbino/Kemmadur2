@@ -13,9 +13,9 @@ let CheckSolution = ({onCheckSolution, disabled}) => {
 		onCheckSolution();
 	};
 
-	let buttonStyle = {float: "right", height: "inherit"};
+	let buttonStyle = {height: "inherit", alignSelf: "flex-end"};
 
-	let labelStyle = {color: disabled ? "grey" : "rgb(66, 134, 244)"};
+	let labelStyle = disabled ? {display: "none"} : {color: "rgb(66, 134, 244)"};
 
 	return (
 		<FlatButton
