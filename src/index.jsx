@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import kemmadurApp from "./reducers";
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
@@ -17,7 +16,7 @@ let store = createStore(kemmadurApp, window.__REDUX_DEVTOOLS_EXTENSION__ && wind
 render(
 	<MuiThemeProvider>
 		<Provider store={store}>
-			<App/>
+			<AppContainer/>
 		</Provider>
 	</MuiThemeProvider>,
 	document.querySelector("#app")

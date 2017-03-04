@@ -8,9 +8,11 @@ import {EXERCISE_LIST} from '../data';
 import {MUTATION_RULES} from '../data';
 import MutationRuleDialogContainer from "../containers/MutationRuleDialogContainer";
 
-const App = () => {
+const App = ({solutionDisplayed}) => {
+
+	let blinkOnDisplayingSolutionClass = (solutionDisplayed) ? "solution-displayed" : "";
 	return (
-		<div>
+		<div className={blinkOnDisplayingSolutionClass}>
 			<div className="instruction-title">Trouvez les bonnes mutations</div>
 			<SentenceDisplayerList exerciseList={EXERCISE_LIST}/>
 			<CheckSolutionContainer/>
