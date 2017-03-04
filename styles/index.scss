@@ -136,7 +136,6 @@ body {
   color: red;
 }
 
-
 .sentencesAndCorrections {
   flex: 1;
 }
@@ -147,4 +146,8 @@ body {
 
 .solution-band {
   border: dashed 3px #88b0ef;
+}
+
+.empty-set {
+  font-size: 12px;
 }

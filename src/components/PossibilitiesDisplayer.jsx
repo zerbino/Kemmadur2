@@ -15,12 +15,17 @@ const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent}
 		onPossibilityClicked(possibilityIndex);
 	};
 
+	// Define what's displayed when the letter is just an empty string
+	const displayedLetter = (letter) => {
+		return letter === '' ? '\u2205' : letter;
+	};
+
 	return (
 		<div className="possibility-container">
 			<div className={currentClass + " mutation-possibilities"}>
 				{
 					possibilities.map((possibility, possibilityIndex) => {
-						return <span key={possibilityIndex} onClick={(e) => {onClick(e, possibilityIndex)}}>{possibility}</span>
+						return <span key={possibilityIndex} onClick={(e) => {onClick(e, possibilityIndex)}}>{displayedLetter(possibility)}</span>
 					})
 				}
 				<ShowMutationRuleContainer/>
