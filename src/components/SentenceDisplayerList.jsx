@@ -7,7 +7,7 @@ import CorrectionContainer from "../containers/CorrectionContainer";
 
 const SentenceDisplayerList = ({exerciseList}) => {
 	return (
-		<div>
+		<div className="sentencesAndCorrections">
 			{
 				exerciseList.map((exercise) => {
 					return (

@@ -12,7 +12,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
- 
+
 body {
   position: relative;
   display: flex;
@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-  min-height: 100%;
+  height: 100%;
   background-image: url(../img/modelecrit.jpg);
   background-size: 700px;
   background-attachment: local;
@@ -33,12 +33,13 @@ body {
 
 .container > div {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 801px) {
   .container {
     width: 700px;
-    margin: auto;
   }
 }
 
@@ -84,6 +85,7 @@ body {
   margin-bottom: 20px;
   border-bottom: 1px solid black;
   display: inline-block;
+  align-self: flex-start;
 }
 
 .sentenceDisplayerContainer {
@@ -132,6 +134,11 @@ body {
 
 .wrong-answer {
   color: red;
+}
+
+
+.sentencesAndCorrections {
+  flex: 1;
 }
 
 .sentenceAndCorrection {
