@@ -139,12 +139,14 @@ export const getMutationRuleAndCaseIdFor = (mutation, rules) => {
 	};
 };
 
-export const getCurrentMutationRuleAndCaseId = (state, exerciseList, rules) => {
-	try {
-		let currentMutation = getCurrentMutation(state, exerciseList);
-		return getMutationRuleAndCaseIdFor(currentMutation, rules);
-	}
-	catch (e) {
+export const getCurrentMutationRuleAndCaseId = (showedMutationRule, exerciseList, rules) => {
+	if (!showedMutationRule) {
 		return false;
+	}
+	else {
+		let ruleMutationIndex = showedMutationRule.currentRuleMutationIndex;
+		let ruleExerciseId = showedMutationRule.currentRuleExerciseId;
+		let currentMutation = getMutation(exerciseList, ruleExerciseId, ruleMutationIndex);
+		return getMutationRuleAndCaseIdFor(currentMutation, rules);
 	}
 };

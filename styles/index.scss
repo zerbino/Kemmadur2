@@ -128,7 +128,7 @@ body {
   color: green;
 }
 
-.check-solution {
+.right-answer {
   color: green;
 }
 
@@ -146,6 +146,7 @@ body {
 
 .solution-band {
   border: dashed 3px #88b0ef;
+  padding: 2px;
 }
 
 @keyframes fade-in-and-out {
@@ -193,4 +194,8 @@ body {
   -moz-animation-duration: 0.5s;
   -o-animation-duration: 0.5s;
   animation-duration: 0.5s;
+}
+
+.clicable {
+  cursor: pointer;
 }

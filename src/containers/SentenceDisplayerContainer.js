@@ -7,6 +7,7 @@ import { getSolutionsGiven } from "../library/stateManipulations";
 import { getExerciseSentence } from "../library/stateManipulations";
 import { getMutationIndexes } from "../library/stateManipulations";
 import { setCurrentMutation } from "../actions/actions"
+import { setShowedMutationRule } from "../actions/actions";
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onMutationClicked: (mutationIndex) => {
 			dispatch(setCurrentMutation(ownProps.exerciseId, mutationIndex));
+		},
+		onClickDisplayRule: (mutationIndex) => {
+			dispatch(setShowedMutationRule(ownProps.exerciseId, mutationIndex));
 		}
 	}
 };

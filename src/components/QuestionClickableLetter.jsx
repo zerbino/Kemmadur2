@@ -15,7 +15,7 @@ import PossibilitiesDisplayerContainer from "../containers/PossibilitiesDisplaye
  * @param isProposal: true if this component currently displays a proposal, false if it's the letter of the not mutated word.
  * @param exerciseId: the id of the exercise containing the mutation
  */
-const ClickableLetter = ({onClick, letter, mutationIndex, possibilities, isCurrent, isProposal, exerciseId}) => {
+const QuestionClickableLetter = ({onClick, letter, mutationIndex, possibilities, isCurrent, isProposal, exerciseId, onClickDisplayRule}) => {
 
 	let letterStyle;
 	if (isProposal) {
@@ -31,12 +31,16 @@ const ClickableLetter = ({onClick, letter, mutationIndex, possibilities, isCurre
 		onClick(mutationIndex);
 	};
 
+	const onDisplayRuleClicked = () => {
+		onClickDisplayRule(mutationIndex);
+	};
+
 	return (
 		<div onClick={(e) => {onClickMethod(e)}} className="clicable-letter">
 			<span style={letterStyle}>[{letter}]</span>
-			<PossibilitiesDisplayerContainer isCurrent={isCurrent} possibilities={possibilities} mutationIndex={mutationIndex} exerciseId={exerciseId}/>
+			<PossibilitiesDisplayerContainer isCurrent={isCurrent} possibilities={possibilities} mutationIndex={mutationIndex} exerciseId={exerciseId} onClickDisplayRule={onDisplayRuleClicked}/>
 		</div>
 	)
 };
 
-export default ClickableLetter;
+export default QuestionClickableLetter;

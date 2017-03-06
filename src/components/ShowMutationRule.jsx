@@ -1,14 +1,15 @@
 import React from "react";
 
-const ShowMutationRule = ({OnClick}) => {
+const ShowMutationRule = ({onClick, exerciseId, mutationIndex}) => {
 
 	const showMutationRule = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		OnClick();
+		onClick(exerciseId, mutationIndex);
 	};
 
-	return <span onClick={(e) => showMutationRule(e)}>+</span>
+	return <span onClick={(e) => {showMutationRule(e)}}>+</span>
+
 };
 
 export default ShowMutationRule;

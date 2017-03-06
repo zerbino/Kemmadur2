@@ -38,9 +38,16 @@ export const resetCurrentMutation = () => {
 	};
 };
 
-export const setShowMutationRule = (showed) => {
+export const setShowedMutationRule = (exerciseId, mutationIndex) => {
 	return {
-		type: "SET_SHOW_MUTATION_RULE",
-		showed
+		type: "SET_SHOWED_MUTATION_RULE",
+		exerciseId,
+		mutationIndex
+	}
+};
+
+export const reSetShowedMutationRule = () => {
+	return {
+		type: "RESET_SHOWED_MUTATION_RULE"
 	}
 };

@@ -58,8 +58,15 @@ const kemmadurApp = (state = initialState, action) => {
 			});
 		case "RESET_CURRENT_MUTATION":
 			return Object.assign({}, state, {currentMutationIndex: -1});
-		case "SET_SHOW_MUTATION_RULE":
-					return Object.assign({}, state, {showMutationRule: action.showed});
+		case "SET_SHOWED_MUTATION_RULE":
+			return Object.assign({}, state, {
+				showedMutationRule: {
+					currentRuleMutationIndex: action.mutationIndex,
+					currentRuleExerciseId: action.exerciseId
+				}
+			});
+		case "RESET_SHOWED_MUTATION_RULE":
+					return Object.assign({}, state, {showedMutationRule: undefined});
 		default:
 			return state;
 	}

@@ -1,18 +1,23 @@
 import React from "react";
+import SolutionClickableLetterContainer from "../containers/SolutionClickableLetterContainer";
 
-const Correction = ({show, rightAnswers, splittedCorrectedSentence, mutationIndexes}) => {
+const Correction = ({show, rightAnswers, splittedCorrectedSentence, mutationIndexes, onClickDisplayRule}) => {
 	let template = '';
 	if (!show) {
 		template = '';
 	}
 	else {
 		if (rightAnswers) {
-			template = <span className="check-solution">✓</span>;
+			template = <span className="right-answer">✓</span>;
 		}
 		else {
 			let correction = splittedCorrectedSentence.map((chunk, index) => {
-				let solutionLetterClass = (mutationIndexes.indexOf(index) !== -1) ? "solution-letter" : "";
-				return <span key={index} className={solutionLetterClass}>{chunk}</span>
+				if (mutationIndexes.indexOf(index) !== -1) {
+					return <SolutionClickableLetterContainer key={index} solutionLetter={chunk} onClickDisplayRule={() => {onClickDisplayRule(index)}}/>
+				}
+				else {
+					return <span key={index}>{chunk}</span>
+				}
 			});
 			template = (
 				<div className="solution-band">

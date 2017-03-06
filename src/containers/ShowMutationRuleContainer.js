@@ -2,17 +2,19 @@
  * Created by rmartignoni on 02/03/2017.
  */
 import ShowMutationRule from "../components/ShowMutationRule";
-import { setShowMutationRule } from "../actions/actions";
 import { connect } from "react-redux";
 
-const mapStateToProps = () => {
-	return {}
+const mapStateToProps = (state) => {
+	return {
+		mutationIndex: state.currentMutationIndex,
+		exerciseId: state.currentExerciseId
+	}
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		OnClick: () => {
-			dispatch(setShowMutationRule(true));
+		onClick: (ruleExerciseId, ruleMutationIndex) => {
+			ownProps.onClickDisplayRule(ruleMutationIndex)
 		}
 	};
 };

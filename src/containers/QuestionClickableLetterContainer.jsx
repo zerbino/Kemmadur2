@@ -4,7 +4,7 @@
 import { connect } from "react-redux";
 import { isCurrentMutation } from "../library/stateManipulations";
 import { getPossibilities } from "../library/stateManipulations";
-import ClickableLetter from "../components/ClickableLetter";
+import QuestionClickableLetter from "../components/QuestionClickableLetter";
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -23,6 +23,6 @@ const mapDispatchToProps = (state, ownProps) => {
 	}
 };
 
-const ClickableLetterContainer = connect(mapStateToProps, mapDispatchToProps)(ClickableLetter);
+const QuestionClickableLetterContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionClickableLetter);
 
-export default ClickableLetterContainer;
+export default QuestionClickableLetterContainer;

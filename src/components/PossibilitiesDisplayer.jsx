@@ -4,7 +4,7 @@
 import React from "react";
 import ShowMutationRuleContainer from "../containers/ShowMutationRuleContainer";
 
-const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent}) => {
+const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent, onClickDisplayRule}) => {
 
 	// These classes are for animation
 	const currentClass = isCurrent ? "mutation-possibilities-current" : "mutation-possibilities-hidden";
@@ -23,7 +23,7 @@ const PossibilitiesDisplayer = ({possibilities, onPossibilityClicked, isCurrent}
 						return <span key={possibilityIndex} onClick={(e) => {onClick(e, possibilityIndex)}}>{possibility}</span>
 					})
 				}
-				<ShowMutationRuleContainer/>
+				<ShowMutationRuleContainer onClickDisplayRule={onClickDisplayRule}/>
 			</div>
 		</div>
 	)
